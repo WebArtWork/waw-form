@@ -22,5 +22,5 @@ module.exports = function (waw) {
 		this.components = obj.components;
 	}
 
-	waw.Form = waw.mongoose.model('Form', Schema);
+	return waw.Form = waw.mongoose.model('Form', Schema);
 };
