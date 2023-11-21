@@ -3,6 +3,7 @@ module.exports = function (waw) {
 		title: String,
 		formId: String,
 		active: Boolean,
+		domain: String,
 		components: [{
 			name: String,
 			key: String,
@@ -20,6 +21,7 @@ module.exports = function (waw) {
 		this.active = !!obj.active;
 		this.formId = obj.formId;
 		this.components = obj.components;
+		this.domain = obj.domain;
 	}
 
 	return waw.Form = waw.mongoose.model('Form', Schema);
