@@ -1,9 +1,15 @@
-module.exports = async function(waw) {
+module.exports = async function (waw) {
 	waw.crud('form', {
+		create: {
+			ensure: async (req, res, next) => {
+				req.body.domain = req.get('host');
+				next();
+			}
+		},
 		get: {
 			ensure: waw.next,
 			query: req => {
-				return {}
+				return { domain: req.get('host') }
 			}
 		},
 		fetch: {
