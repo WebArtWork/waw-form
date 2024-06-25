@@ -8,10 +8,7 @@ module.exports = function (waw) {
 			name: String,
 			key: String,
 			root: Boolean,
-			fields: [{
-				name: String,
-				value: String
-			}],
+			fields: [{}],
 			components: [{}]
 		}]
 	});
