@@ -1,6 +1,7 @@
 module.exports = function (waw) {
 	const Schema = waw.mongoose.Schema({
 		title: String,
+		appId: String,
 		formId: String,
 		active: Boolean,
 		domain: String,
@@ -14,6 +15,7 @@ module.exports = function (waw) {
 	});
 
 	Schema.methods.create = function (obj, user, sd) {
+		this.appId = obj.appId;
 		this.title = obj.title;
 		this.active = !!obj.active;
 		this.formId = obj.formId;
