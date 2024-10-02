@@ -9,7 +9,17 @@ module.exports = async function (waw) {
 		get: {
 			ensure: waw.next,
 			query: req => {
-				return { domain: req.get('host') }
+				const params = {};
+				const [_, queryString] = req.originalUrl.split('?');
+
+				if (queryString) {
+					queryString.split('&').forEach(param => {
+						const [key, value] = param.split('=');
+						params[decodeURIComponent(key)] = decodeURIComponent(value);
+					});
+				}
+
+				return params.appId ? { appId: params.appId } : { domain: req.get('host') }
 			}
 		},
 		fetch: {
